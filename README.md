@@ -23,3 +23,8 @@ initStorypa11y();
 ```
 
 This will create a test suite which tests all of your stories for accessibility.
+
+
+## Credits
+
+This addon is heavily based on the [official storyshots addon](https://github.com/storybooks/storybook/tree/next/addons/storyshots/storyshots-core) and the amazing work done by all their [contributors](https://github.com/storybooks/storybook/graphs/contributors)
