@@ -1,4 +1,4 @@
-import { pa11yWithOptions } from '../test-bodies';
+import { pa11y } from '../test-bodies';
 
 const ignore = ['**/node_modules/**'];
 
@@ -8,7 +8,7 @@ function ensureOptionsDefaults(options) {
     asyncJest,
     storyNameRegex,
     storyKindRegex,
-    test: testMethod = pa11yWithOptions(),
+    test: testMethod = pa11y(),
   } = options;
 
   return {
