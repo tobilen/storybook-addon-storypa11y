@@ -8,7 +8,7 @@ function ensureOptionsDefaults(options) {
     asyncJest,
     storyNameRegex,
     storyKindRegex,
-    test: testMethod = pa11y(),
+    test: testMethod = pa11y,
   } = options;
 
   return {
