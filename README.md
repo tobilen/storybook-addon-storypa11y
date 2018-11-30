@@ -24,6 +24,31 @@ initStorypa11y();
 
 This will create a test suite which tests all of your stories for accessibility.
 
+## Options
+
+You can pass an options object to the `initStorypa11y` function which takes several keys:
+framework: 'react',
+  configPath: path.join(__dirname, '..', '.storybook'),
+  storyKindRegex: /^((?!.*?Fail).)*$/,
+  out: 'storybook-static',
+  test: pa11y,
+### framework
+You can specify which storybook framework to use. Note that `angular` is currently not supported. Defaults to `react`.
+
+### configPath
+Here you can specify the path to your storybook config file. This is required in order to initialize storybook correctly.
+
+### storyKindRegex
+You can pass a regex to only include matching story kinds in accessibility testing.
+
+### storyNameRegex
+You can pass a regex to only include matching stories in accessibility testing.
+
+### out
+Relative path from the project root to the folder you build your storybook in. Defaults to `storybook`.
+
+### test
+It is also possible to pass your own test function. See [stories/failing.test.js](stories/failing.test.js) for an example.
 
 ## Credits
 
