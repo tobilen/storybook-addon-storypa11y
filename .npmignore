@@ -1,4 +1,7 @@
 .idea
 .babelrc
 .gitignore
+.cache
+__setup__
+stories
 storybook-static
