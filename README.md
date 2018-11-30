@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/storybook-addon-storypa11y.svg)](https://badge.fury.io/js/storybook-addon-storypa11y)
 # StoryPa11y
 
 StoryShots adds automatic Jest Testing for Accessibility for [Storybook](https://storybook.js.org/). It uses [pa11y](http://pa11y.org/) in its testing suites.
