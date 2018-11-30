@@ -13,12 +13,16 @@ const pa11yTest = async (url, options = {}) => {
     });
     return { pass: details.issues.length === 0, details };
   } catch (error) {
-    console.error(error.message);
+    return { pass: false, details: error };
   }
 };
 
-const formatIssues = results => {
-  return results.issues
+const formatIssues = details => {
+  if(details instanceof Error) {
+    return details
+  }
+
+  return details.issues
     .map(
       issue =>
         `
