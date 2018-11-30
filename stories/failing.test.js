@@ -13,5 +13,6 @@ initStorypa11y({
   framework: "react",
   configPath: path.join(__dirname, "..", ".storybook"),
   storyKindRegex: /^Fail*$/,
+  out: 'storybook-static',
   test: notPa11y
 });

@@ -8,6 +8,7 @@ function ensureOptionsDefaults(options) {
     asyncJest,
     storyNameRegex,
     storyKindRegex,
+    out = 'storybook',
     test: testMethod = pa11y,
   } = options;
 
@@ -16,6 +17,7 @@ function ensureOptionsDefaults(options) {
     suite,
     storyNameRegex,
     storyKindRegex,
+    out,
     testMethod,
   };
 }
