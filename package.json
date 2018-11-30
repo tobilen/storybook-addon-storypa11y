@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-storypa11y",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Storybook-addon-storypa11y is an addon for storybook that runs pa11y tests over each story in a storybook. It is based on top of the official storyshots addon",
   "keywords": [
     "addon",
@@ -25,8 +25,9 @@
     "build-storybook": "build-storybook",
     "example": "jest index.test",
     "test": "build-storybook && jest",
-    "build": "rollup -c",
-    "storybook": "start-storybook -p 6006"
+    "build": "babel src --out-dir dist --source-maps",
+    "storybook": "start-storybook -p 6006",
+    "prepublish": "yarn build"
   },
   "dependencies": {
     "@storybook/addons": "4.0.9",
