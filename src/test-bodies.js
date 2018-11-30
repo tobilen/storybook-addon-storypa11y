@@ -3,5 +3,5 @@ export const pa11y = async ({ story, context }) => {
     context.kind,
   )}&selectedStory=${encodeURIComponent(context.story)}`;
 
-  await expect(url).toBeAccessible();
+  await expect(url).toBeAccessible(context.pa11yOptions);
 };

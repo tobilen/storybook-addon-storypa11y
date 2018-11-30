@@ -47,6 +47,7 @@ function testStoryPa11y(options = {}) {
     storyNameRegex,
     storyKindRegex,
     out,
+    pa11yOptions,
     testMethod
   } = ensureOptionsDefaults(options);
 
@@ -65,6 +66,7 @@ function testStoryPa11y(options = {}) {
     storyKindRegex,
     storyNameRegex,
     out,
+    pa11yOptions,
     testMethod,
     testMethodParams
   });

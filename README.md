@@ -47,6 +47,9 @@ You can pass a regex to only include matching stories in accessibility testing.
 ### out
 Relative path from the project root to the folder you build your storybook in. Defaults to `storybook`.
 
+### pa11yOptions
+Options that will be passed directly to pa11y. See [their documentation](https://github.com/pa11y/pa11y#configuration) for what can be passed. Also check the [default options](https://github.com/tobilen/storybook-addon-storypa11y/blob/master/src/api/ensureOptionsDefaults.js#L31) set by StoryPa11y.
+
 ### test
 It is also possible to pass your own test function. See [stories/failing.test.js](stories/failing.test.js) for an example.
 

@@ -7,11 +7,12 @@ function pa11yTest({
   fileName,
   framework,
   out,
+  pa11yOptions,
   testMethod,
   testMethodParams,
 }) {
   const { name } = story;
-  const context = { fileName, kind, story: name, framework, out, };
+  const context = { fileName, kind, story: name, framework, out, pa11yOptions };
 
   if (asyncJest === true) {
     it(name, done =>
