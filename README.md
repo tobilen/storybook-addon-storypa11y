@@ -56,6 +56,21 @@ Options that will be passed directly to pa11y. See [their documentation](https:/
 ### test
 It is also possible to pass your own test function. See [stories/failing.test.js](stories/failing.test.js) for an example.
 
+## Troubleshooting
+
+### ReferenceError: __requireContext is not defined
+This may happen if you use webpacks `require.context` functionality to gather all your storybooks stories. It's not available from a jest environment, which we can fix by adding a babel plugin to provide the same interface. 
+* Install the plugin with `npm install --save-dev babel-plugin-require-context-hook`
+* Add the plugin to your pa11y test file. Example:
+```js
+import initStorypa11y from 'storybook-addon-storypa11y';
+import contextHook from 'babel-plugin-require-context-hook/register';
+
+contextHook();
+initStorypa11y();
+```
+
+
 ## Credits
 
 This addon is heavily based on the [official storyshots addon](https://github.com/storybooks/storybook/tree/next/addons/storyshots/storyshots-core) and the amazing work done by all their [contributors](https://github.com/storybooks/storybook/graphs/contributors)
