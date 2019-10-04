@@ -9,7 +9,7 @@ module.exports = {
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   testEnvironment: 'jsdom',
-  setupTestFrameworkScriptFile: './__setup__/jest.init.js',
+  setupFilesAfterEnv: ['./__setup__/jest.init.js'],
   setupFiles: ['raf/polyfill'],
   testURL: 'http://localhost',
 };
