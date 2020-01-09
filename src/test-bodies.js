@@ -1,5 +1,5 @@
 export const pa11y = async ({ story, context }) => {
-  const url = `file://${process.cwd()}/${context.out}/iframe.html?selectedKind=${encodeURIComponent(
+  const url = `${context.host}/iframe.html?selectedKind=${encodeURIComponent(
     context.kind,
   )}&selectedStory=${encodeURIComponent(context.story)}`;
 
