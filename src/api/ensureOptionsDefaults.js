@@ -9,7 +9,7 @@ function ensureOptionsDefaults(options) {
     storyNameRegex,
     storyKindRegex,
     out = "storybook",
-    host,
+    host = `file://${process.cwd()}/${options.out || "storybook"}`,
     pa11yOptions = {},
     test: testMethod = pa11y
   } = options;
