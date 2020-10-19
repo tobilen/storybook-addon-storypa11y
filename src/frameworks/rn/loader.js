@@ -18,11 +18,11 @@ function configure(options, storybook) {
   }
 
   const resolvedConfigPath = path.resolve(configPath);
-  require.requireActual(resolvedConfigPath);
+  jest.requireActual(resolvedConfigPath);
 }
 
 function load(options) {
-  const storybook = require.requireActual('@storybook/react-native');
+  const storybook = jest.requireActual('@storybook/react-native');
 
   configure(options, storybook);
 

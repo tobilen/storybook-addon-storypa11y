@@ -21,7 +21,7 @@ function configure(options) {
 
   const resolvedConfigPath = getConfigPathParts(configPath);
 
-  require.requireActual(resolvedConfigPath);
+  jest.requireActual(resolvedConfigPath);
 }
 
 export default configure;

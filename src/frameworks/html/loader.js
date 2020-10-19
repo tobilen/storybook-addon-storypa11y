@@ -9,13 +9,13 @@ function load(options) {
   global.STORYBOOK_ENV = 'html';
 
   const { configPath, config } = options;
-  const storybook = require.requireActual('@storybook/html');
+  const storybook = jest.requireActual('@storybook/html');
 
   configure({ configPath, config, storybook });
 
   return {
     framework: 'html',
-    renderTree: require.requireActual('./renderTree').default,
+    renderTree: jest.requireActual('./renderTree').default,
     renderShallowTree: () => {
       throw new Error('Shallow renderer is not supported for HTML');
     },

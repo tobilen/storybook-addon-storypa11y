@@ -7,14 +7,14 @@ function test(options) {
 
 function load(options) {
   const { configPath, config } = options;
-  const storybook = require.requireActual('@storybook/react');
+  const storybook = jest.requireActual('@storybook/react');
 
   configure({ configPath, config, storybook });
 
   return {
     framework: 'react',
-    renderTree: require.requireActual('./renderTree').default,
-    renderShallowTree: require.requireActual('./renderShallowTree').default,
+    renderTree: jest.requireActual('./renderTree').default,
+    renderShallowTree: jest.requireActual('./renderShallowTree').default,
     storybook,
   };
 }

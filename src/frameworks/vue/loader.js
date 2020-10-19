@@ -3,7 +3,7 @@ import hasDependency from '../hasDependency';
 import configure from '../configure';
 
 function mockVueToIncludeCompiler() {
-  jest.mock('vue', () => require.requireActual('vue/dist/vue.common.js'));
+  jest.mock('vue', () => jest.requireActual('vue/dist/vue.common.js'));
 }
 
 function test(options) {
@@ -15,13 +15,13 @@ function load(options) {
   mockVueToIncludeCompiler();
 
   const { configPath, config } = options;
-  const storybook = require.requireActual('@storybook/vue');
+  const storybook = jest.requireActual('@storybook/vue');
 
   configure({ configPath, config, storybook });
 
   return {
     framework: 'vue',
-    renderTree: require.requireActual('./renderTree').default,
+    renderTree: jest.requireActual('./renderTree').default,
     renderShallowTree: () => {
       throw new Error('Shallow renderer is not supported for vue');
     },
