@@ -7,7 +7,7 @@ function setupAngularJestPreset() {
   // is running inside jest -  one of the things that `jest-preset-angular/setupJest` does is
   // extending the `window.Reflect` with all the needed metadata functions, that are required
   // for emission of the TS decorations like 'design:paramtypes'
-  require.requireActual('jest-preset-angular/setupJest');
+  jest.requireActual('jest-preset-angular/setupJest');
 }
 
 function test(options) {
@@ -20,13 +20,13 @@ function load(options) {
   setupAngularJestPreset();
 
   const { configPath, config } = options;
-  const storybook = require.requireActual('@storybook/angular');
+  const storybook = jest.requireActual('@storybook/angular');
 
   configure({ configPath, config, storybook });
 
   return {
     framework: 'angular',
-    renderTree: require.requireActual('./renderTree').default,
+    renderTree: jest.requireActual('./renderTree').default,
     renderShallowTree: () => {
       throw new Error('Shallow renderer is not supported for angular');
     },

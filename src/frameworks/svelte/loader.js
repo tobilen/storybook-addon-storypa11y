@@ -12,13 +12,13 @@ function load(options) {
   global.STORYBOOK_ENV = 'svelte';
 
   const { configPath, config } = options;
-  const storybook = require.requireActual('@storybook/svelte');
+  const storybook = jest.requireActual('@storybook/svelte');
 
   configure({ configPath, config, storybook });
 
   return {
     framework: 'svelte',
-    renderTree: require.requireActual('./renderTree').default,
+    renderTree: jest.requireActual('./renderTree').default,
     renderShallowTree: () => {
       throw new Error('Shallow renderer is not supported for svelte');
     },
