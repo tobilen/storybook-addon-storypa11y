@@ -5,7 +5,9 @@
   "keywords": [
     "addon",
     "storybook",
-    "pa11y"
+    "pa11y",
+    "storybook-addon",
+    "test"
   ],
   "homepage": "https://github.com/tobilen/storybook-addon-storypa11y",
   "publishConfig": {
@@ -61,5 +63,8 @@
     "rollup": "^1.32.1",
     "rollup-plugin-includepaths": "^0.2.4",
     "styled-components": "^5.2.0"
+  },
+  "storybook": {
+    "displayName": "Storypa11y"
   }
 }
