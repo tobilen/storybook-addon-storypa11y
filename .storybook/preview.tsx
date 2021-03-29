@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import { DecoratorFn } from "@storybook/react";
 import { createGlobalStyle } from "styled-components";
 
 const AccessibleBaseColors = createGlobalStyle`
@@ -7,7 +8,7 @@ const AccessibleBaseColors = createGlobalStyle`
   }
 `;
 
-const AccessibleColorDecorator = (story) => (
+const AccessibleColorDecorator: DecoratorFn = (story) => (
   <>
     <AccessibleBaseColors />
     {story()}

@@ -1,6 +1,6 @@
-import { initStorypa11y } from "../src";
+import { initStorypa11y, Pa11yTestFnOptions } from "../src";
 
-export const notPa11y = async ({ page, options }) =>
+export const notPa11y = async ({ page, options }: Pa11yTestFnOptions) =>
   await expect(page).not.toBeAccessible(
     options.context.parameters.pa11yOptions
   );

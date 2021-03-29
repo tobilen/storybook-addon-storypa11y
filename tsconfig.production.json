@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "sourceMap": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "jsx": "react",
+    "allowJs": false,
+    "outDir": "dist",
+    "skipLibCheck": false
+  },
+  "files": ["./src/index.ts"]
+}

@@ -1,4 +1,5 @@
 module.exports = {
+  testRunner: "jest-circus/runner",
   cacheDirectory: ".cache/jest",
   clearMocks: true,
   moduleNameMapper: {
@@ -7,10 +8,13 @@ module.exports = {
     "\\.(css|scss)$": "<rootDir>/__setup__/styleMock.js",
     "\\.(md)$": "<rootDir>/__setup__/htmlMock.js",
   },
-  moduleFileExtensions: ["js", "json"],
+  moduleFileExtensions: ["ts", "tsx", "js", "json", "jsx"],
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["./__setup__/jest.init.js"],
+  setupFilesAfterEnv: ["./__setup__/jest.init.ts"],
   setupFiles: ["raf/polyfill"],
+  transform: {
+    "^.+\\.(ts|tsx)$": "ts-jest",
+  },
   testURL: "http://localhost",
 };

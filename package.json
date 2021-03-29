@@ -29,9 +29,8 @@
     "build-storybook": "build-storybook",
     "example": "jest index.test",
     "test": "build-storybook && jest",
-    "build": "babel src --out-dir dist --source-maps",
-    "storybook": "start-storybook -p 6006",
-    "prepublish": "yarn build"
+    "build": "tsc --project tsconfig.production.json",
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "@storybook/addons": "6.1.21",
@@ -39,7 +38,7 @@
     "@storybook/addon-storyshots-puppeteer": "^6.1.21",
     "global": "^4.4.0",
     "pa11y": "^5.3.0",
-    "puppeteer": "^8.0.0"
+    "puppeteer": "^3.3.0"
   },
   "peerDependencies": {
     "@storybook/react": ">6.0"
@@ -56,19 +55,38 @@
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/react": "^6.1.21",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.31",
+    "@types/pa11y": "^5.3.2",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.1",
+    "@types/puppeteer": "^2.0.0",
+    "ts-jest": "^26.5.4",
+    "@types/styled-components": "^5.1.7",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-require-context-hook": "^1.0.0",
+    "jest-circus": "^26.6.3",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "raf": "^3.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.2",
-    "rollup": "^1.32.1",
-    "rollup-plugin-includepaths": "^0.2.4",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "jest-junit": "^12.0.0",
+    "typescript": "^4.2.3"
+  },
+  "resolutions": {
+    "@types/react": "17.0.3"
+  },
+  "jest-junit": {
+    "addFileAttribute": "true",
+    "ancestorSeparator": ".",
+    "classNameTemplate": "{classname}.{title}",
+    "outputDirectory": "./test-results/junit",
+    "outputName": "results.xml"
   },
   "storybook": {
     "displayName": "Storypa11y"

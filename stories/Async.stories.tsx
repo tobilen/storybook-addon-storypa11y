@@ -1,15 +1,11 @@
-import React from "react";
+import * as React from "react";
+import { Story } from "@storybook/react";
 
 const EXPECTED_VALUE = "THIS IS SO DONE";
 const TIMEOUT = 5;
 
-class AsyncTestComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: "",
-    };
-  }
+class AsyncTestComponent extends React.Component<{}, { value: string }> {
+  state = { value: "" };
 
   componentDidMount() {
     setTimeout(() => {
@@ -29,6 +25,6 @@ export default {
   title: "Async",
 };
 
-export const With5MsTimeoutSimulatingAsyncOperation = () => (
+export const With5MsTimeoutSimulatingAsyncOperation: Story = () => (
   <AsyncTestComponent />
 );
