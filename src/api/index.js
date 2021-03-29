@@ -1,77 +1,58 @@
-import global, { describe } from "global";
-import addons, { mockChannel } from "@storybook/addons";
+import path from "path";
+import {
+  puppeteerTest,
+  defaultCommonConfig,
+} from "@storybook/addon-storyshots-puppeteer";
 import ensureOptionsDefaults from "./ensureOptionsDefaults";
-import pa11yTests from "./pa11yTestsTemplate";
-import loadFramework from "../frameworks/frameworkLoader";
+import { pa11y } from "../test-bodies";
 import { toBeAccessible } from "./jestMatcher";
+import initStoryshots from "@storybook/addon-storyshots";
 
-global.STORYBOOK_REACT_CLASSES = global.STORYBOOK_REACT_CLASSES || {};
-
-const methods = ["beforeAll", "beforeEach", "afterEach", "afterAll"];
-
-function callTestMethodGlobals(testMethod) {
-  methods.forEach(method => {
-    if (typeof testMethod[method] === "function") {
-      global[method](testMethod[method]);
-    }
+export const testStorypa11y = (options = {}) => {
+  expect.extend({
+    toBeAccessible,
   });
-}
 
-function testStoryPa11y(options = {}) {
-  if (typeof describe !== "function") {
-    throw new Error("testStoryPa11y is intended only to be used inside jest");
-  }
+  const testFn = options.test || pa11y;
 
-  if (!expect || typeof expect.extend !== "function") {
-    throw new Error("testStoryPa11y is intended only to be used inside jest");
-  } else {
-    expect.extend({
-      toBeAccessible
+  const testBody = async (page, storyOptions) => {
+    await testFn({
+      page: page.target()._targetInfo.url,
+      options: {
+        ...options.pa11yOptions,
+        ...storyOptions,
+      },
     });
-  }
-
-  addons.setChannel(mockChannel());
-
-  const { storybook, framework, renderTree, renderShallowTree } = loadFramework(
-    options
-  );
-  const storiesGroups = storybook.getStorybook();
-
-  if (storiesGroups.length === 0) {
-    throw new Error("storypa11y found 0 stories");
-  }
-
-  const {
-    asyncJest,
-    suite,
-    storyNameRegex,
-    storyKindRegex,
-    out,
-    host,
-    pa11yOptions,
-    testMethod
-  } = ensureOptionsDefaults(options);
-
-  const testMethodParams = {
-    renderTree,
-    renderShallowTree
   };
 
-  callTestMethodGlobals(testMethod);
+  return puppeteerTest({
+    ...defaultCommonConfig,
+    storybookUrl: `file://${path.resolve(__dirname, "../storybook-static")}`,
+    ...ensureOptionsDefaults(options),
+    testBody,
+  });
+};
 
-  pa11yTests({
-    groups: storiesGroups,
-    asyncJest,
+export function initStorypa11y(options = {}) {
+  const {
     suite,
-    framework,
-    storyKindRegex,
+    storybookUrl,
     storyNameRegex,
-    out,
-    host,
+    storyKindRegex,
     pa11yOptions,
-    testMethod,
-    testMethodParams
+    test,
+  } = ensureOptionsDefaults(options);
+
+  initStoryshots({
+    suite,
+    storyNameRegex,
+    storyKindRegex,
+    test: testStorypa11y({
+      storybookUrl,
+      pa11yOptions,
+      test,
+    }),
   });
 }
 
-export default testStoryPa11y;
+export default initStorypa11y;

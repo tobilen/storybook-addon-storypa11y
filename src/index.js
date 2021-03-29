@@ -1,7 +1,7 @@
-import api from './api';
-import { pa11y } from './test-bodies';
-import { toBeAccessible } from './api/jestMatcher';
+import initStorypa11y from "./api";
 
-export { pa11y, toBeAccessible };
+export * from "./test-bodies";
+export * from "./api/jestMatcher";
+export * from "./api";
 
-export default api;
+export default initStorypa11y;

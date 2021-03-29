@@ -11,14 +11,14 @@ const pa11yTest = async (url, options = {}) => {
   }
 };
 
-const formatIssues = details => {
+const formatIssues = (details) => {
   if (details instanceof Error) {
     return details;
   }
 
   return details.issues
     .map(
-      issue =>
+      (issue) =>
         `
   Message: ${printReceived(issue.message)}
   Selector: ${printReceived(issue.selector)}
@@ -37,6 +37,6 @@ export async function toBeAccessible(receivedUrl, pa11yOptions) {
       : () =>
           `Expected ${receivedUrl} to be accessible, but:\n` +
           `${formatIssues(details)}`,
-    pass: pass
+    pass: pass,
   };
 }

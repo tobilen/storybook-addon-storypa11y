@@ -1,11 +1,9 @@
-import path from 'path';
-import initStorypa11y, { pa11y } from '../src';
+import { initStorypa11y, pa11y } from "../src";
 
 initStorypa11y({
-  framework: 'react',
-  configPath: path.join(__dirname, '..', '.storybook'),
+  suite: "a11y checks",
   storyKindRegex: /^((?!.*?Fail).)*$/,
-  out: 'storybook-static',
+  out: "storybook-static",
   pa11yOptions: {
     includeNotices: true,
   },

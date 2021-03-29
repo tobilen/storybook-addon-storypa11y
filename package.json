@@ -24,6 +24,8 @@
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
+    "format": "prettier --write \"**/*.{js,ts,tsx}\" --ignore-path .gitignore",
+    "lint": "prettier --check \"**/*.{js,ts,tsx}\" --ignore-path .gitignore",
     "build-storybook": "build-storybook",
     "example": "jest index.test",
     "test": "build-storybook && jest",
@@ -32,9 +34,15 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@storybook/addons": "5.2.1",
+    "@storybook/addons": "6.1.21",
+    "@storybook/addon-storyshots": "^6.1.21",
+    "@storybook/addon-storyshots-puppeteer": "^6.1.21",
     "global": "^4.4.0",
-    "pa11y": "^5.3.0"
+    "pa11y": "^5.3.0",
+    "puppeteer": "^8.0.0"
+  },
+  "peerDependencies": {
+    "@storybook/react": ">6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
@@ -43,23 +51,21 @@
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.12",
-    "@babel/preset-flow": "^7.13.13",
     "@babel/preset-react": "^7.13.13",
     "@babel/runtime": "^7.13.10",
-    "@storybook/addon-actions": "^5.3.21",
-    "@storybook/addon-links": "^5.3.21",
-    "@storybook/react": "^5.3.21",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-require-context-hook": "^1.0.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "jest": "^26.6.3",
-    "jest-enzyme": "^7.1.2",
+    "prettier": "^2.2.1",
     "raf": "^3.4.1",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
     "rollup": "^1.32.1",
     "rollup-plugin-includepaths": "^0.2.4",
     "styled-components": "^5.2.1"

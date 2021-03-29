@@ -1,4 +1,4 @@
-import { describe, it } from 'global';
+import { describe, it } from "global";
 
 function pa11yTest({
   asyncJest,
@@ -13,10 +13,18 @@ function pa11yTest({
   testMethodParams,
 }) {
   const { name } = story;
-  const context = { fileName, kind, story: name, framework, out, host, pa11yOptions };
+  const context = {
+    fileName,
+    kind,
+    story: name,
+    framework,
+    out,
+    host,
+    pa11yOptions,
+  };
 
   if (asyncJest === true) {
-    it(name, done =>
+    it(name, (done) =>
       testMethod({
         done,
         story,
@@ -35,7 +43,13 @@ function pa11yTest({
   }
 }
 
-function pa11yTestSuite({ kind, stories, suite, storyNameRegex, ...restParams }) {
+function pa11yTestSuite({
+  kind,
+  stories,
+  suite,
+  storyNameRegex,
+  ...restParams
+}) {
   describe(suite, () => {
     describe(kind, () => {
       // eslint-disable-next-line

@@ -1,1 +1,1 @@
-module.exports = '<h1>HTML Mock</h1>';
+module.exports = "<h1>HTML Mock</h1>";
