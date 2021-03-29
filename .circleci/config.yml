@@ -2,7 +2,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/storybook-addon-storypa11y
   docker:
-    - image: circleci/node:15.12-browsers
+    - image: circleci/node:current-browsers
 jobs:
   install:
     <<: *defaults
