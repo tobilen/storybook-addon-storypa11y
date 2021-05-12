@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-storypa11y",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Storybook-addon-storypa11y is an addon for storybook that runs pa11y tests over each story in a storybook. It is based on top of the official storyshots addon",
   "keywords": [
     "addon",
