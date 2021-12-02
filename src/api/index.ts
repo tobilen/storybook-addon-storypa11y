@@ -10,7 +10,7 @@ import ensureOptionsDefaults, {
 import { pa11y } from "../test-bodies";
 import { toBeAccessible } from "./jestMatcher";
 import initStoryshots from "@storybook/addon-storyshots";
-import { Page } from "puppeteer";
+import puppeteer, { Browser, Page } from "puppeteer";
 
 export const testStorypa11y = (options: EnsuredStorypa11yOptions) => {
   expect.extend({
@@ -18,6 +18,16 @@ export const testStorypa11y = (options: EnsuredStorypa11yOptions) => {
   });
 
   const testFn = options.test || pa11y;
+  let browser: Browser;
+
+  const getCustomBrowser = async () => {
+    browser = await puppeteer.launch({
+      headless: true,
+      ...options.pa11yOptions.chromeLaunchConfig,
+    });
+
+    return browser;
+  };
 
   const testBody = async (
     page: Page,
@@ -29,11 +39,20 @@ export const testStorypa11y = (options: EnsuredStorypa11yOptions) => {
     });
   };
 
-  return puppeteerTest({
+  const t = puppeteerTest({
     ...defaultCommonConfig,
     ...options,
     testBody,
+    getCustomBrowser,
   });
+
+  const puppeteerTestAfterHook = t.afterAll;
+  t.afterAll = async () => {
+    await puppeteerTestAfterHook();
+    await browser.close();
+  };
+
+  return t;
 };
 
 export type Storypa11yOptions = {
