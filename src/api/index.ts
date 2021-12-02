@@ -43,13 +43,15 @@ export const testStorypa11y = (options: EnsuredStorypa11yOptions) => {
     ...defaultCommonConfig,
     ...options,
     testBody,
-    getCustomBrowser,
+    ...(options.pa11yOptions.chromeLaunchConfig ? { getCustomBrowser } : {}),
   });
 
   const puppeteerTestAfterHook = t.afterAll;
   t.afterAll = async () => {
     await puppeteerTestAfterHook();
-    await browser.close();
+    if (options.pa11yOptions.chromeLaunchConfig) {
+      await browser.close();
+    }
   };
 
   return t;
